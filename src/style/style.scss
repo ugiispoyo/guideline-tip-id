@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+}
+
+.body-guideline-id {
+    width: 100vw;
+    height: 100%;
+    z-index: 9998;
+    background: rgba(0, 0, 0, 0.719);
+    margin: -10px;
+    padding: 10px;
+    top: 0px;
+    left: 0px;
+}
+
+[data-tip=true] {
+    background: #fff;
+    z-index: 9999;
+    margin: -10px;
+    position: relative;
+    border-radius: 3px;
+    box-shadow: 0px 1px 11px -3px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 1px 11px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 11px -3px rgba(0,0,0,0.75);
+    // animation: zoom-out 0.1s ease-out;
+
+    & > .wrap_elm_ {
+        width: 100%;
+        display: block;
+        margin: auto;
+        background: transparent;
+        padding: 10px;
+    
+        & > * {
+            width: 100%;
+        }
+    }
+}
+
+/* Guideline */
+.guideline_tip {
+    z-index: 9999;
+    position: absolute;
+    background: #fff;
+    border-radius: 5px;
+    width: 200px;
+    height: 100px;
+    box-shadow: 0px 1px 11px -3px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 1px 11px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 11px -3px rgba(0,0,0,0.75);
+
+    &::after {
+        content: '';
+        width: 0; 
+        height: 0; 
+        position: absolute;
+    }
+
+    &.guideline_tip_left::after {
+        /* Triangle Left */
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 10px solid white;
+        right: -10px;
+        top: 10%;
+    }
+
+    &.guideline_tip_right::after {
+        /* Triangle Right */
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent; 
+        border-right:10px solid white; 
+        left: -10px;
+        top: 10%;
+    }
+
+    &.guideline_tip_top::after {
+        /* Triangle Down */
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid white;
+        bottom: -10px;
+        left: 30px;
+    }
+
+    &.guideline_tip_bottom::after {
+        /* Triangle Top */
+        border: 10px solid transparent;
+        border-top: 0px;
+        border-bottom: 13px solid white;
+        top: -10px;
+        left: 30px;
+    }
+
+    /* Button Close */
+    & .btn_close_guideline_tip {
+        outline: none;
+        background: #fff;
+        border-radius: 50%;
+        border: 1px solid #ddd;
+        top: -10px;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        cursor: pointer;
+        & > img {
+            width: 15px;
+            height: 15px;
+        }
+    }
+}
+
+@keyframes zoom-out {
+    0% {
+        transform: scale(2,2);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
