@@ -1,16 +1,20 @@
 {
-  "name": "tip-id",
+  "name": "guideline-tip-id",
   "version": "0.0.1",
   "description": "Guideline ui",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "webpack serve --config config/webpack.dev.js",
     "build": "webpack --config config/webpack.prod.js"
   },
   "keywords": [
     "tip",
-    "guideline",
-    "tip id"
+    "guideline tip",
+    "guideline tip id",
+    "tip id",
+    "guideline tip js",
+    "guideline js",
+    "tip js"
   ],
   "author": "Ugi Ispoyo Widodo",
   "license": "ISC",

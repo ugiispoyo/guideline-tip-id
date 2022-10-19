@@ -7,6 +7,8 @@ const prodConfig = {
     entry: "./src/index.ts",
     mode: "production",
     output: {
+        library: 'guidelineTipId',
+        libraryTarget: 'umd',
         filename: "index.js",
         path: path.resolve(__dirname, "../dist"),
     },

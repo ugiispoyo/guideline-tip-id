@@ -1,95 +1,158 @@
 import "./style/style.scss";
-import IClose from './images/xmark.svg?url';
+import IClose from "./images/xmark.svg?url";
 
-const classBody = document.body
-classBody.setAttribute('class', 'body-guideline-id')
-
-const dataID = "article" as string
-const positionTip = "right" as string;
-
-const article = document.getElementById(dataID) as HTMLDivElement;
-const widthElm: number = article.offsetWidth + 20;
-const heightElm: number = article.offsetHeight + 20;
-const offsetTopElm: number = article.offsetTop;
-
-/* Auto Scroll */
-window.onload = function () {
-    const html = document.getElementsByTagName("html")[0] as any;
-    html.style["scroll-behavior"] = "smooth";
-
-    setTimeout(() => {
-        window.scrollTo(0, offsetTopElm - 140);
-        html.removeAttribute("style");
-    }, 500);
+let renderBtnClose = true;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+let allData: Array<I_Args> = [];
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+let objDataActive: I_Args = {
+    dataID: "",
+    positionTip: "",
+    content: "",
 };
 
-/* Wrap element child of the data-tip element */
-const wrapElm = document.createElement("div") as HTMLDivElement;
-wrapElm.setAttribute("class", "wrap_elm_");
-article.parentNode.replaceChild(wrapElm, article);
-wrapElm.appendChild(article);
-
-/* Div data-tip */
-const activeElm = document.createElement("div") as HTMLDivElement;
-activeElm.setAttribute("id", "data_tip");
-activeElm.setAttribute("data-tip", "true");
-activeElm.style.width = `${widthElm}px`;
-activeElm.style.height = `${heightElm}px`;
-wrapElm.parentNode.replaceChild(activeElm, wrapElm);
-activeElm.appendChild(wrapElm);
-
-/* Wrapper Guideline Tip */
-const guidelineTip = document.createElement("div") as HTMLDivElement;
-guidelineTip.setAttribute(
-    "class",
-    `guideline_tip guideline_tip_${positionTip}`
-);
-
-switch (positionTip) {
-    case "left":
-        guidelineTip.style.top = `10%`;
-        guidelineTip.style.right = `${widthElm + 10}px`;
-        break;
-    case "right":
-        guidelineTip.style.top = `10%`;
-        guidelineTip.style.left = `${widthElm + 10}px`;
-        break;
-    case "top":
-        guidelineTip.style.bottom = `${heightElm + 10}px`;
-        guidelineTip.style.left = `10%`;
-        break;
-    case "bottom":
-        guidelineTip.style.top = `${heightElm + 10}px`;
-        guidelineTip.style.left = `10%`;
-        break;
+interface I_ArgsInit {
+    closeButton?: boolean | true;
+    dataGuideline: Array<I_Args>;
 }
-activeElm.appendChild(guidelineTip);
 
-/* Button Close Guideline */
-const btnClose = document.createElement('button') as HTMLButtonElement
-btnClose.setAttribute('class', 'btn_close_guideline_tip')
-switch (positionTip) {
-    case "left":
-        btnClose.style.left = `-10px`;
-        break;
-    case "right":
-        btnClose.style.right = `-10px`;
-        break;
-    default:
-        btnClose.style.right = `-10px`;
-        break;
+interface I_Args {
+    dataID: string;
+    positionTip: string;
+    content?: any;
 }
-const imgClose = document.createElement('img') as HTMLImageElement
-imgClose.setAttribute('src', IClose)
-btnClose.appendChild(imgClose)
-btnClose.addEventListener('click', () => closeGuideline())
 
-guidelineTip.appendChild(btnClose)
 
-const closeGuideline = () => {
-    classBody.removeAttribute('class')
-    const articleDiv = document.getElementById(dataID) as any
-    article.parentElement.replaceWith(...articleDiv.parentElement.childNodes);
-    article.parentElement.replaceWith(...articleDiv.parentElement.childNodes);
-    guidelineTip.remove()
+const classBody = document.body;
+const html = document.getElementsByTagName("html")[0] as any;
+html.style["scroll-behavior"] = "smooth";
+
+/* Auto scroll */
+function autoScroll(offsetTopElm: number) {
+    setTimeout(() => {
+        if(offsetTopElm === 0) {
+            window.scrollTo(0, 0);
+        } else {
+            window.scrollTo(0, offsetTopElm - 140);
+        }
+    }, 300);
 }
+
+/* Render Tip */
+function renderGuideline() {
+    const { dataID, positionTip, content } = objDataActive;
+
+    classBody.setAttribute("class", "body-guideline-id");
+
+    const article = document.getElementById(dataID) as HTMLDivElement;
+    const widthElm: number = article.offsetWidth + 20;
+    const heightElm: number = article.offsetHeight + 20;
+    const offsetTopElm: number = article.offsetTop;
+
+    /* Auto Scroll */
+    const html = document.getElementsByTagName("html")[0] as any;
+    html.style["scroll-behavior"] = "smooth";
+    autoScroll(offsetTopElm)
+
+    /* Wrap element child of the data-tip element */
+    const wrapElm = document.createElement("div") as HTMLDivElement;
+    wrapElm.setAttribute("class", "wrap_elm_");
+    article.parentNode.replaceChild(wrapElm, article);
+    wrapElm.appendChild(article);
+
+    /* Div data-tip */
+    const activeElm = document.createElement("div") as HTMLDivElement;
+    activeElm.setAttribute("id", "data_tip");
+    activeElm.setAttribute("data-tip", "true");
+    activeElm.style.width = `${widthElm}px`;
+    activeElm.style.height = `${heightElm}px`;
+    wrapElm.parentNode.replaceChild(activeElm, wrapElm);
+    activeElm.appendChild(wrapElm);
+
+    /* Wrapper Guideline Tip */
+    const guidelineTip = document.createElement("div") as HTMLDivElement;
+    guidelineTip.setAttribute(
+        "class",
+        `guideline_tip guideline_tip_${positionTip}`
+    );
+
+    switch (positionTip) {
+        case "left":
+            guidelineTip.style.top = `10%`;
+            guidelineTip.style.right = `${widthElm + 10}px`;
+            break;
+        case "right":
+            guidelineTip.style.top = `10%`;
+            guidelineTip.style.left = `${widthElm + 10}px`;
+            break;
+        case "top":
+            guidelineTip.style.bottom = `${heightElm + 10}px`;
+            guidelineTip.style.left = `10%`;
+            break;
+        case "bottom":
+            guidelineTip.style.top = `${heightElm + 10}px`;
+            guidelineTip.style.left = `10%`;
+            break;
+    }
+    activeElm.appendChild(guidelineTip);
+
+    /* Button Close Guideline */
+    const btnClose = document.createElement("button") as HTMLButtonElement;
+    btnClose.setAttribute("class", "btn_close_guideline_tip");
+    switch (positionTip) {
+        case "left":
+            btnClose.style.left = `-10px`;
+            break;
+        case "right":
+            btnClose.style.right = `-10px`;
+            break;
+        default:
+            btnClose.style.right = `-10px`;
+            break;
+    }
+    const imgClose = document.createElement("img") as HTMLImageElement;
+    imgClose.setAttribute("src", IClose);
+    btnClose.appendChild(imgClose);
+    btnClose.addEventListener("click", function () {
+        closeGuideline();
+    });
+
+    guidelineTip.innerHTML = content();
+
+    if(renderBtnClose) {
+        guidelineTip.appendChild(btnClose);
+    }
+}
+
+/* Initial */
+function init({closeButton, dataGuideline}: I_ArgsInit) {
+    allData = dataGuideline;
+    renderBtnClose = typeof closeButton !== 'undefined' ? closeButton : true
+    objDataActive = {
+        dataID: dataGuideline[0].dataID,
+        positionTip: dataGuideline[0].positionTip,
+        content: dataGuideline[0].content,
+    };
+    renderGuideline();
+}
+
+/* Next Tip */
+function nextTip(id: string): void {
+    closeGuideline();
+    objDataActive = allData.find((val) => val.dataID === id);
+    renderGuideline();
+}
+
+/* Close Tip */
+function closeGuideline(): void {
+    document.body.removeAttribute("class");
+    const article = document.querySelectorAll('[class="wrap_elm_"]')[0]
+        .children[0] as any;
+    article.parentElement.replaceWith(...article.parentElement.childNodes);
+    article.parentElement.replaceWith(...article.parentElement.childNodes);
+    document.getElementsByClassName("guideline_tip")[0].remove();
+    autoScroll(0)
+    html.removeAttribute("style");
+}
+
+export { init, closeGuideline, nextTip };
