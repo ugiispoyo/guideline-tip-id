@@ -27,8 +27,11 @@ No | Value | Type | Default | Description
 2 | positionTip | "left", "right", "top", "bottom" | "" | the position of the guidelines
 3 | content | any | "" | content from guidelines
 
+<hr/>
 
 ### Demo with CDN
 [With CDN](https://web-platform-z7ot74.stackblitz.io) 
+
+<br/>
 
 
