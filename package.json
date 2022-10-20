@@ -2,7 +2,7 @@
   "name": "guideline-tip-id",
   "version": "0.0.2",
   "description": "Guideline ui",
-  "main": "dist",
+  "main": "dist/",
   "scripts": {
     "start": "webpack serve --config config/webpack.dev.js --node-env platform-vanilla",
     "start-react": "webpack serve --config config/webpack.dev.js --node-env platform-react",
