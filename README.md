@@ -29,9 +29,14 @@ No | Value | Type | Default | Description
 
 <hr/>
 
-### Demo with CDN
-[With CDN](https://web-platform-z7ot74.stackblitz.io) 
+### Demo with (Vanilla JS) - CDN
+[With VanillaJS](https://web-platform-z7ot74.stackblitz.io) 
 
 <br/>
 
+
+### Demo (ReactJS)
+[With ReactJS](https://stackblitz.com/edit/react-ts-vmoxyo?file=App.tsx) 
+
+<br/>
 

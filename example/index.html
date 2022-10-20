@@ -60,7 +60,7 @@
                 <div class="new-article" id="tag">This is tag</div>
             </div>
         </div>
-        <script src="http://localhost:8080/bundle.js"></script>
+        <script src="http://localhost:8080/index.js"></script>
         <script>
             var { init, closeGuideline, nextTip } = guidelineTipId;
             var dataProps = {
@@ -69,37 +69,27 @@
                     {
                         dataID: "article",
                         positionTip: "bottom",
-                        content: function () {
-                            return `<p>Ini adalah untuk artikel 1 Ini adalah untuk artikel 1</p><br/><br/><button onclick="closeGuideline()">Skip</button><button onclick="nextTip('article-bottom-2')">Next</button>`;
-                        },
+                        content: `<p>Ini adalah untuk artikel 1 Ini adalah untuk artikel 1</p><br/><br/><button onclick="closeGuideline()">Skip</button><button onclick="nextTip('article-bottom-2')">Next</button>`
                     },
                     {
                         dataID: "article-bottom-2",
                         positionTip: "right",
-                        content: function () {
-                            return `<p>Ini adalah artikel bottom 2</p><button onclick="closeGuideline()">Skip</button><button onclick="nextTip('test-content')">Next</button>`;
-                        },
+                        content: `<p>Ini adalah artikel bottom 2</p><button onclick="closeGuideline()">Skip</button><button onclick="nextTip('test-content')">Next</button>`
                     },
                     {
                         dataID: "test-content",
                         positionTip: "top",
-                        content: function () {
-                            return `<p>Ini adalah content test artikel bottom 2</p><button onclick="closeGuideline()">Skip</button><button onclick="nextTip('article-middle')">Next</button>`;
-                        },
+                        content: `<p>Ini adalah content test artikel bottom 2</p><button onclick="closeGuideline()">Skip</button><button onclick="nextTip('article-middle')">Next</button>`
                     },
                     {
                         dataID: "article-middle",
                         positionTip: "right",
-                        content: function () {
-                            return `<p>Ini adalah untuk artikel 1</p><button onclick="closeGuideline()">Skip</button><button onclick="nextTip('cat')">Next</button>`;
-                        },
+                        content: `<p>Ini adalah untuk artikel 1</p><button onclick="closeGuideline()">Skip</button><button onclick="nextTip('cat')">Next</button>`
                     },
                     {
                         dataID: "cat",
                         positionTip: "left",
-                        content: function () {
-                            return `<p>Ini adalah category</p><button onclick="closeGuideline()">Close</button`;
-                        },
+                        content: `<p>Ini adalah category</p><button onclick="closeGuideline()">Close</button`
                     },
                 ],
             };

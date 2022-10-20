@@ -4,16 +4,47 @@ const { merge } = require("webpack-merge");
 const commonConfig = require("./webpack.common.js");
 
 const devConfig = {
-    entry: "./src/index.ts",
-    mode: "production",
-    devtool: 'cheap-module-source-map',
+    mode: "development",
+    devtool: "cheap-module-source-map",
     output: {
-        library: 'guidelineTipId',
-        libraryTarget: 'umd',
-        filename: "bundle.js",
+        filename: "[name].js",
+        library: "guidelineTipId",
+        libraryTarget: "umd",
         path: path.resolve(__dirname, "dist"),
     },
-    plugins: [new HtmlWebpackPlugin({ template: "./example/index.html" })],
 };
 
-module.exports = merge(commonConfig, devConfig);
+module.exports = (env, argv) => {
+    let dist;
+    switch(argv.nodeEnv) {
+        case 'platform-vanilla':
+            dist = {
+                template: "./example/index.html",
+                entry: {
+                    index: "./src/index.ts",
+                }
+            }
+            break;
+        case 'platform-react':
+            dist = {
+                template: "./example/index-react.html",
+                entry: {
+                    react: "./src/index-react.tsx",
+                }
+            }
+            break;
+    }   
+    return {
+        ...merge(commonConfig, {
+            ...devConfig,
+            entry: dist.entry,
+            plugins: [
+                new HtmlWebpackPlugin(
+                    { 
+                        template: dist.template 
+                    }
+                )
+            ],
+        }),
+    };
+};

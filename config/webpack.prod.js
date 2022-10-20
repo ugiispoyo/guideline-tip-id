@@ -4,12 +4,16 @@ const { merge } = require("webpack-merge");
 const commonConfig = require("./webpack.common.js");
 
 const prodConfig = {
-    entry: "./src/index.ts",
+    entry: {
+        "index": "./src/index.ts",
+        "react": "./src/index-react.tsx",
+    },
     mode: "production",
     output: {
-        library: 'guidelineTipId',
-        libraryTarget: 'umd',
-        filename: "index.js",
+        filename: '[name].js',
+        library: "guidelineTipId",
+        libraryTarget: "umd",
+        // filename: "bundle.js",
         path: path.resolve(__dirname, "../dist"),
     },
 };

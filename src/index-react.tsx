@@ -1,5 +1,6 @@
 import "./style/style.scss";
 import IClose from "./images/xmark.svg?url";
+import initReact from './react'
 
 let renderBtnClose = true;
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -22,7 +23,6 @@ interface I_Args {
     content?: any;
 }
 
-
 const classBody = document.body;
 const html = document.getElementsByTagName("html")[0] as any;
 html.style["scroll-behavior"] = "smooth";
@@ -30,7 +30,7 @@ html.style["scroll-behavior"] = "smooth";
 /* Auto scroll */
 function autoScroll(offsetTopElm: number) {
     setTimeout(() => {
-        if(offsetTopElm === 0) {
+        if (offsetTopElm === 0) {
             window.scrollTo(0, 0);
         } else {
             window.scrollTo(0, offsetTopElm - 140);
@@ -40,7 +40,7 @@ function autoScroll(offsetTopElm: number) {
 
 /* Render Tip */
 function renderGuideline() {
-    const { dataID, positionTip, content } = objDataActive;
+    const { dataID, positionTip } = objDataActive;
 
     classBody.setAttribute("class", "body-guideline-id");
 
@@ -52,7 +52,7 @@ function renderGuideline() {
     /* Auto Scroll */
     const html = document.getElementsByTagName("html")[0] as any;
     html.style["scroll-behavior"] = "smooth";
-    autoScroll(offsetTopElm)
+    autoScroll(offsetTopElm);
 
     /* Wrap element child of the data-tip element */
     const wrapElm = document.createElement("div") as HTMLDivElement;
@@ -71,7 +71,7 @@ function renderGuideline() {
 
     /* Wrapper Guideline Tip */
     const guidelineTip = document.createElement("div") as HTMLDivElement;
-    guidelineTip.setAttribute('id', 'guideline_tip_id_wrap')
+    guidelineTip.setAttribute("id", "guideline_tip_id_wrap");
     guidelineTip.setAttribute(
         "class",
         `guideline_tip guideline_tip_${positionTip}`
@@ -118,17 +118,15 @@ function renderGuideline() {
         closeGuideline();
     });
 
-    guidelineTip.innerHTML = content;
-
-    if(renderBtnClose) {
+    if (renderBtnClose) {
         guidelineTip.appendChild(btnClose);
     }
 }
 
 /* Initial */
-function init({closeButton, dataGuideline}: I_ArgsInit) {
+function init({ closeButton, dataGuideline }: I_ArgsInit) {
     allData = dataGuideline;
-    renderBtnClose = typeof closeButton !== 'undefined' ? closeButton : true
+    renderBtnClose = typeof closeButton !== "undefined" ? closeButton : true;
     objDataActive = {
         dataID: dataGuideline[0].dataID,
         positionTip: dataGuideline[0].positionTip,
@@ -136,7 +134,8 @@ function init({closeButton, dataGuideline}: I_ArgsInit) {
     };
     window.onload = () => {
         renderGuideline();
-    }
+        initReact(dataGuideline[0].content)
+    };
 }
 
 /* Next Tip */
@@ -144,6 +143,7 @@ function nextTip(id: string): void {
     closeGuideline();
     objDataActive = allData.find((val) => val.dataID === id);
     renderGuideline();
+    initReact(objDataActive.content)
 }
 
 /* Close Tip */
@@ -154,7 +154,7 @@ function closeGuideline(): void {
     article.parentElement.replaceWith(...article.parentElement.childNodes);
     article.parentElement.replaceWith(...article.parentElement.childNodes);
     document.getElementsByClassName("guideline_tip")[0].remove();
-    autoScroll(0)
+    autoScroll(0);
     html.removeAttribute("style");
 }
 

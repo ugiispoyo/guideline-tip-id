@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Example TIP ID - React</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            .wrap {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .wrap .article {
+                width: 60%;
+                padding: 10px;
+            }
+            .wrap .article div[id*="article"] {
+                border: 1px solid #000;
+                height: 300px;
+                margin-bottom: 10px;
+            }
+            .wrap .sidebar {
+                margin-top: 40px;
+                width: 39%;
+            }
+            .wrap .category-article {
+                border: 1px solid rgb(41, 35, 35);
+                height: 200px;
+                margin-bottom: 10px;
+            }
+            .wrap .new-article {
+                border: 1px solid #000;
+                height: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script src="http://localhost:8080/react.js"></script>
+        <script
+            crossorigin
+            src="https://unpkg.com/react@18/umd/react.development.js"
+        ></script>
+        <script
+            crossorigin
+            src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+        ></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/jsx">
+            var { init, closeGuideline, nextTip } = guidelineTipId;
+
+            const App = () => {
+
+                var dataProps = {
+                    closeButton: false,
+                    dataGuideline: [
+                        {
+                            dataID: "article",
+                            positionTip: "bottom",
+                            content: (
+                                <div>
+                                    <p>This is the article content 1</p>
+                                    <button onClick={() => closeGuideline()}>Skip</button>
+                                    <button onClick={() => nextTip('article-bottom-2')}>Next</button>
+                                </div>
+                            )
+                        },
+                        {
+                            dataID: "article-bottom-2",
+                            positionTip: "bottom",
+                            content: (
+                                <div>
+                                    <p>This is the article content 2</p>
+                                    <button onClick={() => closeGuideline()}>Skip</button>
+                                    <button onClick={() => nextTip('cat')}>Next</button>
+                                </div>
+                            )
+                        },
+                        {
+                            dataID: "cat",
+                            positionTip: "left",
+                            content: (
+                                <div>
+                                    <p>This is the article content</p>
+                                    <button onClick={() => closeGuideline()}>Close</button>
+                                </div>
+                            )
+                        },
+                    ],
+                };
+
+                React.useEffect(() => {
+                    init(dataProps)
+                }, [])
+
+                return (
+                    <div className="wrap">
+                        <div className="article">
+                            <div id="article">This is the article content</div>
+                            <div id="article-middle">This is the article content</div>
+                            <div id="article-bottom">This is the article content</div>
+                            <div id="article-bottom-1">This is the article content</div>
+                            <div id="article-bottom-2">
+                                This is the article content
+                                <div id="test-content" style={{width: '150px'}}>Test 123</div>
+                            </div>
+                        </div>
+                        <div className="sidebar">
+                            <div className="category-article" id="cat">
+                                This is category article
+                            </div>
+                            <div className="new-article" id="new">
+                                <p>This is new article</p>
+                            </div>
+                            <div className="new-article" id="tag">This is tag</div>
+                        </div>
+                    </div>
+                )
+            };
+
+            const rootElement = document.getElementById("root");
+            const root = ReactDOM.createRoot(rootElement);
+
+            root.render(
+                <App />
+            );
+        </script>
+    </body>
+</html>
