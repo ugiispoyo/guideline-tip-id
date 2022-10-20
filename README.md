@@ -28,15 +28,3 @@ No | Value | Type | Default | Description
 3 | content | any | "" | content from guidelines
 
 <hr/>
-
-### Demo with (Vanilla JS) - CDN
-[With VanillaJS](https://web-platform-z7ot74.stackblitz.io) 
-
-<br/>
-
-
-### Demo (ReactJS)
-[With ReactJS](https://stackblitz.com/edit/react-ts-vmoxyo?file=App.tsx) 
-
-<br/>
-
