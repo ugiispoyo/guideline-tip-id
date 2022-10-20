@@ -1,6 +1,6 @@
 {
   "name": "guideline-tip-id",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Guideline ui",
   "main": "dist/",
   "scripts": {
