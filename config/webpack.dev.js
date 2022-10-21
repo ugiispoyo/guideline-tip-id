@@ -41,9 +41,12 @@ module.exports = (env, argv) => {
             plugins: [
                 new HtmlWebpackPlugin(
                     { 
-                        template: dist.template 
+                        template: dist.template,
+                        scriptLoading: 'blocking',
+                        inject: 'body',
                     }
                 )
+                /* webpack template documentation https://github.com/jantimon/html-webpack-plugin#options */
             ],
         }),
     };

@@ -1,6 +1,3 @@
-const path = require("path");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-
 module.exports = {
     module: {
         rules: [
@@ -40,16 +37,4 @@ module.exports = {
     resolve: {
         extensions: [".tsx", ".ts", ".js"],
     },
-    // plugins: [
-    //     new CopyWebpackPlugin({
-    //         patterns: [
-    //             {
-    //                 from: path.resolve(__dirname, "../src/images/*"),
-    //                 to({ context, absoluteFilename }) {
-    //                     return Promise.resolve("../dist/images/[name][ext]");
-    //                 },
-    //             },
-    //         ],
-    //     }),
-    // ],
 };
