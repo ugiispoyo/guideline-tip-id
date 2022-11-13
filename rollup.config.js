@@ -11,9 +11,13 @@ const config = [
         output: [
             {
                 exports: "auto",
+                name: "react",
                 dir: "dist",
-                format: "cjs",
+                format: "es",
                 preserveModules: false,
+                globals: {
+                  'react-dom': 'ReactDOM',
+                },
             },
         ],
         plugins: [
@@ -27,7 +31,7 @@ const config = [
                 tsconfig: "./tsconfig.json",
             }),
         ],
-        external: ["react", "react-dom"],
+        external: ["react-dom"],
     },
 ];
 

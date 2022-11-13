@@ -1,6 +1,4 @@
-'use strict';
-
-var require$$0 = require('react-dom');
+import require$$0 from 'react-dom';
 
 /******************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -271,6 +269,4 @@ var nextTip = /** @class */ (function (_super) {
     return nextTip;
 }(Core));
 
-exports.closeGuideline = closeGuideline;
-exports.init = init;
-exports.nextTip = nextTip;
+export { closeGuideline, init, nextTip };
