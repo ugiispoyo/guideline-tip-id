@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     module: {
         rules: [
             {
@@ -16,17 +16,6 @@ module.exports = {
                 // Compiles Sass to CSS
                 "sass-loader",
               ],
-            },
-            {
-                test: /\.svg$/i,
-                type: "asset",
-                resourceQuery: /url/, // *.svg?url
-            },
-            {
-                test: /\.svg$/i,
-                issuer: /\.[jt]sx?$/,
-                resourceQuery: { not: [/url/] }, // exclude react component if *.svg?url
-                use: ["@svgr/webpack", "url-loader"],
             },
             {
                 test: /\.(png|jpg|jpeg|gif|webp|ttf|eot|woff(2)?)(\?[a-z0-9=&.]+)?$/,

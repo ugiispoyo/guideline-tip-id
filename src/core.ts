@@ -1,5 +1,4 @@
 import "./style/style.scss";
-import IClose from "./images/xmark.svg?url";
 
 export interface I_Args {
     dataID: string;
@@ -8,7 +7,6 @@ export interface I_Args {
 }
 
 export interface I_ArgsInit {
-    closeButton?: boolean | true;
     dataGuideline: Array<I_Args>;
 }
 
@@ -64,20 +62,31 @@ class Core {
 
     /* Init Document */
     initDocument(): void {
-        const classBody = document.body;
-        classBody.setAttribute("class", "body-guideline-id");
-        this.html = document.getElementsByTagName("html")[0] as any;
+        const backdrop = document?.createElement("div") as HTMLDivElement;
+        backdrop.setAttribute("class", "backdrop_guideline-id");
+        document?.body?.appendChild(backdrop);
+
+        this.html = document?.getElementsByTagName("html")?.[0] as any;
         this.html.style["scroll-behavior"] = "smooth";
     }
 
     /* closeGuideline */
     closeGuideline(isNext?: boolean | false): void {
-        document.body.removeAttribute("class");
-        const article = document.querySelectorAll('[class="wrap_elm_"]')[0]
-            .children[0] as any;
-        article.parentElement.replaceWith(...article.parentElement.childNodes);
-        article.parentElement.replaceWith(...article.parentElement.childNodes);
-        document.getElementsByClassName("guideline_tip")[0].remove();
+        const backdrop = document.getElementsByClassName(
+            "backdrop_guideline-id"
+        );
+        for (let i = 0; i < backdrop.length; i++) {
+            backdrop[i].remove();
+        }
+
+        const article = document.querySelectorAll('[class="wrap_elm_"]')?.[0]
+            ?.children as any;
+        for (let i = 0; i < article?.length; i++) {
+            const del = article?.[i];
+            del.parentElement.replaceWith(...del.parentElement.childNodes);
+            del.parentElement.replaceWith(...del.parentElement.childNodes);
+        }
+        document.getElementsByClassName("guideline_tip")[0]?.remove();
         autoScroll(0);
         if (!isNext) {
             this?.html.removeAttribute("style");
@@ -86,82 +95,59 @@ class Core {
 
     /* Render guideline */
     renderGuideline(): void {
-        const { dataID, positionTip } = this.objDataActive;
+        if (typeof this.objDataActive !== "undefined") {
+            const { dataID, positionTip } = this.objDataActive;
 
-        const article = document.getElementById(dataID) as HTMLDivElement;
-        const widthElm: number = article.offsetWidth + 20;
-        const heightElm: number = article.offsetHeight + 20;
-        const offsetTopElm: number = article.offsetTop;
+            const article = document.getElementById(dataID) as HTMLDivElement;
+            const widthElm: number = article.offsetWidth + 20;
+            const heightElm: number = article.offsetHeight + 20;
+            const offsetTopElm: number = article.offsetTop;
 
-        /* Auto Scroll */
-        autoScroll(offsetTopElm);
+            /* Auto Scroll */
+            autoScroll(offsetTopElm);
 
-        /* Wrap element child of the data-tip element */
-        const wrapElm = document.createElement("div") as HTMLDivElement;
-        wrapElm.setAttribute("class", "wrap_elm_");
-        article.parentNode.replaceChild(wrapElm, article);
-        wrapElm.appendChild(article);
+            /* Wrap element child of the data-tip element */
+            const wrapElm = document.createElement("div") as HTMLDivElement;
+            wrapElm.setAttribute("class", "wrap_elm_");
+            article.parentNode.replaceChild(wrapElm, article);
+            wrapElm.appendChild(article);
 
-        /* Div data-tip */
-        const activeElm = document.createElement("div") as HTMLDivElement;
-        activeElm.setAttribute("id", "data_tip");
-        activeElm.setAttribute("data-tip", "true");
-        activeElm.style.width = `${widthElm}px`;
-        activeElm.style.height = `${heightElm}px`;
-        wrapElm.parentNode.replaceChild(activeElm, wrapElm);
-        activeElm.appendChild(wrapElm);
+            /* Div data-tip */
+            const activeElm = document.createElement("div") as HTMLDivElement;
+            activeElm.setAttribute("id", "data_tip");
+            activeElm.setAttribute("data-tip", "true");
+            activeElm.style.width = `${widthElm}px`;
+            activeElm.style.height = `${heightElm}px`;
+            wrapElm.parentNode.replaceChild(activeElm, wrapElm);
+            activeElm.appendChild(wrapElm);
 
-        /* Wrapper Guideline Tip */
-        this.guidelineTip = document.createElement("div") as HTMLDivElement;
-        this.guidelineTip.setAttribute("id", "guideline_tip_id_wrap");
-        this.guidelineTip.setAttribute(
-            "class",
-            `guideline_tip guideline_tip_${positionTip}`
-        );
+            /* Wrapper Guideline Tip */
+            this.guidelineTip = document.createElement("div") as HTMLDivElement;
+            this.guidelineTip.setAttribute("id", "guideline_tip_id_wrap");
+            this.guidelineTip.setAttribute(
+                "class",
+                `guideline_tip guideline_tip_${positionTip}`
+            );
 
-        switch (positionTip) {
-            case "left":
-                this.guidelineTip.style.top = `5px`;
-                this.guidelineTip.style.right = `${widthElm + 10}px`;
-                break;
-            case "right":
-                this.guidelineTip.style.top = `5px`;
-                this.guidelineTip.style.left = `${widthElm + 10}px`;
-                break;
-            case "top":
-                this.guidelineTip.style.bottom = `${heightElm + 10}px`;
-                this.guidelineTip.style.left = `5px`;
-                break;
-            case "bottom":
-                this.guidelineTip.style.top = `${heightElm + 10}px`;
-                this.guidelineTip.style.left = `5px`;
-                break;
-        }
-        activeElm.appendChild(this.guidelineTip);
-
-        /* Button Close Guideline */
-        const btnClose = document.createElement("button") as any;
-        btnClose.setAttribute("class", "btn_close_guideline_tip");
-        switch (positionTip) {
-            case "left":
-                btnClose.style.left = `-10px`;
-                break;
-            case "right":
-                btnClose.style.right = `-10px`;
-                break;
-            default:
-                btnClose.style.right = `-10px`;
-                break;
-        }
-        const imgClose = document.createElement("img") as HTMLImageElement;
-        imgClose.setAttribute("src", IClose);
-        btnClose.appendChild(imgClose);
-        btnClose.addEventListener("click", function () {
-            this.closeGuideline();
-        });
-
-        if (this.isRenderBtnClose) {
-            this.guidelineTip.appendChild(btnClose);
+            switch (positionTip) {
+                case "left":
+                    this.guidelineTip.style.top = `5px`;
+                    this.guidelineTip.style.right = `${widthElm + 10}px`;
+                    break;
+                case "right":
+                    this.guidelineTip.style.top = `5px`;
+                    this.guidelineTip.style.left = `${widthElm + 10}px`;
+                    break;
+                case "top":
+                    this.guidelineTip.style.bottom = `${heightElm + 10}px`;
+                    this.guidelineTip.style.left = `5px`;
+                    break;
+                case "bottom":
+                    this.guidelineTip.style.top = `${heightElm + 10}px`;
+                    this.guidelineTip.style.left = `5px`;
+                    break;
+            }
+            activeElm.appendChild(this.guidelineTip);
         }
     }
 }

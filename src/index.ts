@@ -4,11 +4,9 @@ const { closeGuideline } = new Core();
 const core = new Core();
 
 class init extends Core {
-    constructor({ closeButton, dataGuideline }: I_ArgsInit) {
+    constructor({ dataGuideline }: I_ArgsInit) {
         super();
         core.allData = dataGuideline;
-        core.isRenderBtnClose =
-            typeof closeButton !== "undefined" ? closeButton : true;
         core.objDataActive = {
             dataID: dataGuideline[0].dataID,
             positionTip: dataGuideline[0].positionTip,

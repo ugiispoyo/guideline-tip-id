@@ -7,28 +7,27 @@ const core = new Core();
 function renderOnReact(content: any) {
     setTimeout(() => {
         const elm = document.getElementById('guideline_tip_id_wrap') as HTMLDivElement
-        const guidelineContent = ReactDOM.createRoot(elm);
-        guidelineContent.render(content);
+        if (elm) {
+            const guidelineContent = ReactDOM.createRoot(elm);
+            guidelineContent.render(content);
+        }
     }, 50)
 }
 
 class init extends Core {
-    constructor({ closeButton, dataGuideline }: I_ArgsInit) {
+    constructor({ dataGuideline }: I_ArgsInit) {
         super();
         core.allData = dataGuideline;
-        core.isRenderBtnClose =
-            typeof closeButton !== "undefined" ? closeButton : true;
         core.objDataActive = {
             dataID: dataGuideline[0].dataID,
             positionTip: dataGuideline[0].positionTip,
             content: dataGuideline[0].content,
         };
 
-        window.onload = function () {
-            core.initDocument();
-            core.renderGuideline();
-            renderOnReact(core.objDataActive.content);
-        };
+        core.closeGuideline(true);
+        core.initDocument();
+        core.renderGuideline();
+        renderOnReact(core.objDataActive.content);
     }
 
 }
