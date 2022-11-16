@@ -228,13 +228,11 @@ if (process.env.NODE_ENV === 'production') {
 var closeGuideline = new Core().closeGuideline;
 var core = new Core();
 function renderOnReact(content) {
-    setTimeout(function () {
-        var elm = document.getElementById('guideline_tip_id_wrap');
-        if (elm) {
-            var guidelineContent = client.createRoot(elm);
-            guidelineContent.render(content);
-        }
-    }, 50);
+    var elm = document.getElementById('guideline_tip_id_wrap');
+    if (elm) {
+        var guidelineContent = client.createRoot(elm);
+        guidelineContent.render(content);
+    }
 }
 var init = /** @class */ (function (_super) {
     __extends(init, _super);
