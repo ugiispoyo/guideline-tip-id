@@ -5,13 +5,11 @@ const { closeGuideline } = new Core();
 const core = new Core();
 
 function renderOnReact(content: any) {
-    setTimeout(() => {
-        const elm = document.getElementById('guideline_tip_id_wrap') as HTMLDivElement
-        if (elm) {
-            const guidelineContent = ReactDOM.createRoot(elm);
-            guidelineContent.render(content);
-        }
-    }, 50)
+    const elm = document.getElementById('guideline_tip_id_wrap') as HTMLDivElement
+    if (elm) {
+        const guidelineContent = ReactDOM.createRoot(elm);
+        guidelineContent.render(content);
+    }
 }
 
 class init extends Core {
