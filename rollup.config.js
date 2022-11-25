@@ -7,19 +7,12 @@ import postcss from "rollup-plugin-postcss";
 const config = [
     {
         preserveEntrySignatures: true,
-        input: "src/react.tsx",
-        output: [
-            {
-                exports: "auto",
-                name: "react",
-                dir: "dist",
-                format: "es",
-                preserveModules: false,
-                globals: {
-                  'react-dom': 'ReactDOM',
-                },
-            },
-        ],
+        input: ["src/react.ts", "src/vue.ts"],
+        output: {
+            exports: "auto",
+            dir: "dist",
+            format: "es",
+        },
         plugins: [
             postcss({
                 extensions: [".css"],
@@ -31,7 +24,7 @@ const config = [
                 tsconfig: "./tsconfig.json",
             }),
         ],
-        external: ["react-dom"],
+        external: ["react-dom", "vue"],
     },
 ];
 

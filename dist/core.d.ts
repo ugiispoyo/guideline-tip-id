@@ -1,12 +1,12 @@
 import "./style/style.scss";
-export interface I_Args {
+export declare type I_Args = {
     dataID: string;
     positionTip: string;
     content?: any;
-}
-export interface I_ArgsInit {
+};
+export declare type I_ArgsInit = {
     dataGuideline: Array<I_Args>;
-}
+};
 declare class Core {
     guidelineTip: HTMLDivElement;
     _html: any;
