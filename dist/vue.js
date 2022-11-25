@@ -1,39 +1,22 @@
 import { C as Core, _ as __extends } from './core-af175579.js';
-import require$$0 from 'react-dom';
-
-var client = {};
-
-var m = require$$0;
-if (process.env.NODE_ENV === 'production') {
-  client.createRoot = m.createRoot;
-  client.hydrateRoot = m.hydrateRoot;
-} else {
-  var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-  client.createRoot = function(c, o) {
-    i.usingClientEntryPoint = true;
-    try {
-      return m.createRoot(c, o);
-    } finally {
-      i.usingClientEntryPoint = false;
-    }
-  };
-  client.hydrateRoot = function(c, h, o) {
-    i.usingClientEntryPoint = true;
-    try {
-      return m.hydrateRoot(c, h, o);
-    } finally {
-      i.usingClientEntryPoint = false;
-    }
-  };
-}
+import Vue, { h } from 'vue';
 
 var closeGuideline = new Core().closeGuideline;
 var core = new Core();
-function renderOnReact(content) {
-    var elm = document.getElementById('guideline_tip_id_wrap');
+function renderOnVue(content) {
+    var elm = document.getElementById("guideline_tip_id_wrap");
     if (elm) {
-        var guidelineContent = client.createRoot(elm);
-        guidelineContent.render(content);
+        var atr = elm.attributes;
+        var atrTipWrap_1 = {};
+        for (var i = 0; i < atr.length; i++) {
+            atrTipWrap_1[atr[i].name] = atr[i].nodeValue;
+        }
+        new Vue({
+            el: "#guideline_tip_id_wrap",
+            render: function () {
+                return h("div", atrTipWrap_1, [h(content)]);
+            },
+        });
     }
 }
 var initialGuideline = /** @class */ (function (_super) {
@@ -52,7 +35,7 @@ var initialGuideline = /** @class */ (function (_super) {
         core.closeGuideline(true);
         core.initDocument();
         core.renderGuideline();
-        renderOnReact(core.objDataActive.content);
+        renderOnVue(core.objDataActive.content);
     };
     initialGuideline.prototype.nextTip = function (id) {
         core.closeGuideline(true);
@@ -60,7 +43,7 @@ var initialGuideline = /** @class */ (function (_super) {
         try {
             core.objDataActive = core.allData.find(function (val) { return val.dataID === id; });
             core.renderGuideline();
-            renderOnReact(core.objDataActive.content);
+            renderOnVue(core.objDataActive.content);
         }
         catch (e) {
             console.error("Error :", "".concat(e.message, ", Please check, your element \"id\" is exists!"));

@@ -12,9 +12,12 @@ function renderOnReact(content: any) {
     }
 }
 
-class init extends Core {
-    constructor({ dataGuideline }: I_ArgsInit) {
+class initialGuideline extends Core {
+    constructor() {
         super();
+    }
+
+    init({ dataGuideline }: I_ArgsInit): void {
         core.allData = dataGuideline;
         core.objDataActive = {
             dataID: dataGuideline[0].dataID,
@@ -28,17 +31,20 @@ class init extends Core {
         renderOnReact(core.objDataActive.content);
     }
 
-}
-
-class nextTip extends Core {
-    constructor(id: string) {
-        super();
+    nextTip(id: string): void {
         core.closeGuideline(true);
         core.initDocument();
-        core.objDataActive = core.allData.find((val) => val.dataID === id);
-        core.renderGuideline();
-        renderOnReact(core.objDataActive.content);
+        try {
+            core.objDataActive = core.allData.find((val) => val.dataID === id);
+            core.renderGuideline();
+            renderOnReact(core.objDataActive.content);
+        } catch(e: any) {
+            console.error("Error :", `${e.message}, Please check, your element "id" is exists!`);
+        }
     }
+
 }
 
+const init = new initialGuideline().init;
+const nextTip = new initialGuideline().nextTip;
 export { closeGuideline, init, nextTip };

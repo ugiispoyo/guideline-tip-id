@@ -1,6 +1,6 @@
 # Guideline Tip Id
 
-Simple guideline tip
+Simple guideline tip, coach mark
 
 ## Installation
 
@@ -34,3 +34,7 @@ No | Value | Type | Default | Description
 <br/>
 
 [ReactJS](https://github.com/ugiispoyo/example-guideline-tip-id-react/blob/master/src/App.js) 
+
+<br/>
+
+[VueJS (NuxtJS) - on version guideline >= 1.2.1](https://github.com/ugiispoyo/example-guideline-tip-id-nuxtjs-vue-ts) 

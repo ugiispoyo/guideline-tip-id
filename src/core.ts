@@ -1,12 +1,12 @@
 import "./style/style.scss";
 
-export interface I_Args {
+export type I_Args = {
     dataID: string;
     positionTip: string;
     content?: any;
 }
 
-export interface I_ArgsInit {
+export type I_ArgsInit = {
     dataGuideline: Array<I_Args>;
 }
 
@@ -99,8 +99,10 @@ class Core {
             const { dataID, positionTip } = this.objDataActive;
 
             const article = document.getElementById(dataID) as HTMLDivElement;
-            const widthElm: number = article.offsetWidth + 20;
-            const heightElm: number = article.offsetHeight + 20;
+            // const widthElm: number = article.offsetWidth + 20;
+            // const heightElm: number = article.offsetHeight + 20;
+            const widthElm: number = article.offsetWidth;
+            const heightElm: number = article.offsetHeight;
             const offsetTopElm: number = article.offsetTop;
 
             /* Auto Scroll */

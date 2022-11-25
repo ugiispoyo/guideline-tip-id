@@ -1,2 +1,3 @@
+declare module 'vue'
 declare module 'react-dom'
 declare module 'react-dom/client'
