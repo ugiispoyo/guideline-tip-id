@@ -42,4 +42,4 @@ No | Value | Type | Default | Description
 <br/>
 
 #### Note:
-For Vue it only supports vue 3 and above, and only supports guidelines with version 1.2.1 and above
+For `Vue` it only supports `>= vue 3`, and only supports guideline-tip-id with version `>= 1.2.1`
