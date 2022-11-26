@@ -34,9 +34,6 @@
     "webpack-dev-server": "^4.11.1",
     "webpack-merge": "^5.8.0"
   },
-  "peerDependencies": {
-    "vue": "^3.2.45"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ugiispoyo/guideline-tip-id.git"
