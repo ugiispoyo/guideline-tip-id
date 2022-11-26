@@ -1,5 +1,5 @@
 import Core, { I_ArgsInit } from "./core";
-import Vue, { h } from "vue";
+import { createApp } from "vue";
 
 const { closeGuideline } = new Core();
 const core = new Core();
@@ -14,12 +14,7 @@ function renderOnVue(content: any) {
         for (let i = 0; i < atr.length; i++) {
             atrTipWrap[atr[i].name] = atr[i].nodeValue;
         }
-        new Vue({
-            el: "#guideline_tip_id_wrap",
-            render() {
-                return h("div", atrTipWrap, [h(content)]);
-            },
-        });
+        createApp(content).mount("#guideline_tip_id_wrap");
     }
 }
 
