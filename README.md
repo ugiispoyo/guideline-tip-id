@@ -29,17 +29,17 @@ No | Value | Type | Default | Description
 <hr/>
 
 #### Demo
-[Vanilla JS](https://stackblitz.com/edit/web-platform-z7ot74?file=index.html) 
+[Vanilla](https://stackblitz.com/edit/web-platform-z7ot74?file=index.html) 
 
 <br/>
 
-[ReactJS](https://github.com/ugiispoyo/example-guideline-tip-id-react/blob/master/src/App.js) 
+[React](https://github.com/ugiispoyo/example-guideline-tip-id-react/blob/master/src/App.js) 
 
 <br/>
 
-[VueJS - on version guideline >= 1.2.1](https://stackblitz.com/edit/vitejs-vite-esx3tn?file=src%2FApp.vue) 
+[Vue - on version guideline >= 1.2.1](https://stackblitz.com/edit/vitejs-vite-esx3tn?file=src%2FApp.vue) 
 
 <br/>
 
 #### Note:
-For vuejs it only supports vue 3 and above, and only supports guidelines with version 1.2.1 and above
+For Vue it only supports vue 3 and above, and only supports guidelines with version 1.2.1 and above
