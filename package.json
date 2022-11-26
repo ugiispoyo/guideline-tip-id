@@ -22,6 +22,7 @@
     "react-dom": "^18.2.0",
     "rollup": "^3.3.0",
     "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-uglify": "^6.0.4",
     "sass": "^1.55.0",
     "sass-loader": "^13.1.0",
     "style-loader": "^3.3.1",
