@@ -37,4 +37,9 @@ No | Value | Type | Default | Description
 
 <br/>
 
-[VueJS (NuxtJS) - on version guideline >= 1.2.1](https://github.com/ugiispoyo/example-guideline-tip-id-nuxtjs-vue-ts) 
+[VueJS - on version guideline >= 1.2.1](https://stackblitz.com/edit/vitejs-vite-esx3tn?file=src%2FApp.vue) 
+
+<br/>
+
+#### Note:
+For vuejs it only supports vue 3 and above, and only supports guidelines with version 1.2.1 and above
