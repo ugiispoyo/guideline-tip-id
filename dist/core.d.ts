@@ -1,10 +1,10 @@
 import "./style/style.scss";
-export declare type I_Args = {
+export type I_Args = {
     dataID: string;
     positionTip: string;
     content?: any;
 };
-export declare type I_ArgsInit = {
+export type I_ArgsInit = {
     dataGuideline: Array<I_Args>;
 };
 declare class Core {

@@ -5,9 +5,36 @@ import url from "@rollup/plugin-url";
 import postcss from "rollup-plugin-postcss";
 import { uglify } from "rollup-plugin-uglify";
 
+const global = {
+    preserveEntrySignatures: true,
+    plugins: [
+        postcss({
+            extensions: [".css"],
+        }),
+        url(),
+        uglify(),
+        resolve(),
+        commonjs(),
+        typescript({
+            tsconfig: "./tsconfig.json",
+        }),
+    ],
+};
+
 const config = [
     {
-        preserveEntrySignatures: true,
+        input: "src/index.ts",
+        output: {
+            compact: true,
+            minifyInternalExports: true,
+            exports: "auto",
+            dir: "dist",
+            name: "guidelineTipId",
+            format: "umd",
+        },
+        ...global
+    },
+    {
         input: ["src/react.ts", "src/vue.ts"],
         output: {
             compact: true,
@@ -16,19 +43,8 @@ const config = [
             dir: "dist",
             format: "es",
         },
-        plugins: [
-            postcss({
-                extensions: [".css"],
-            }),
-            url(),
-            uglify(),
-            resolve(),
-            commonjs(),
-            typescript({
-                tsconfig: "./tsconfig.json",
-            }),
-        ],
         external: ["react-dom", "vue"],
+        ...global
     },
 ];
 
