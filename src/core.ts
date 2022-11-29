@@ -135,18 +135,26 @@ class Core {
                 case "left":
                     this.guidelineTip.style.top = `5px`;
                     this.guidelineTip.style.right = `${widthElm + 10}px`;
+                    this.guidelineTip.style.marginRight = `0px`;
+                    this.guidelineTip.style.marginTop = `3px`;
                     break;
                 case "right":
                     this.guidelineTip.style.top = `5px`;
                     this.guidelineTip.style.left = `${widthElm + 10}px`;
+                    this.guidelineTip.style.marginLeft = `0px`;
+                    this.guidelineTip.style.marginTop = `3px`;
                     break;
                 case "top":
                     this.guidelineTip.style.bottom = `${heightElm + 10}px`;
                     this.guidelineTip.style.left = `5px`;
+                    this.guidelineTip.style.marginBottom = `0px`;
+                    this.guidelineTip.style.marginLeft = `3px`;
                     break;
                 case "bottom":
                     this.guidelineTip.style.top = `${heightElm + 10}px`;
                     this.guidelineTip.style.left = `5px`;
+                    this.guidelineTip.style.marginTop = `0px`;
+                    this.guidelineTip.style.marginLeft = `3px`;
                     break;
             }
             activeElm.appendChild(this.guidelineTip);
