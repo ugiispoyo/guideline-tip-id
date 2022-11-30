@@ -3,13 +3,10 @@
 [![npm version](https://img.shields.io/npm/v/guideline-tip-id.svg?style=flat-square)](https://www.npmjs.com/package/guideline-tip-id)
 [![](https://data.jsdelivr.com/v1/package/npm/guideline-tip-id/badge)](https://www.jsdelivr.com/package/npm/guideline-tip-id)
 [![install size](https://packagephobia.com/badge?p=guideline-tip-id)](https://packagephobia.com/result?p=guideline-tip-id)
-[![gzip size][gzip-badge]][unpkg-dist]
-
-[![module formats: cjs, es, and modern][module-formats-badge]][unpkg-dist]
 
 # Guideline Tip Id
 
-Simple guideline tip, coach mark
+Simple guideline tip, javascript coach mark
 
 
 ![Example](https://drive.google.com/uc?export=view&id=1WZpYUWwBKFx_2Xyn42clCZBbN3Erpx6M)
