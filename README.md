@@ -1,9 +1,12 @@
 
 [![npm stat](https://img.shields.io/npm/dm/guideline-tip-id.svg?style=flat-square)](https://npm-stat.com/charts.html?package=guideline-tip-id)
 [![npm version](https://img.shields.io/npm/v/guideline-tip-id.svg?style=flat-square)](https://www.npmjs.com/package/guideline-tip-id)
-[![gzip size]][unpkg-dist]
-[![size]][unpkg-dist]
 [![](https://data.jsdelivr.com/v1/package/npm/guideline-tip-id/badge)](https://www.jsdelivr.com/package/npm/guideline-tip-id)
+
+<br/>
+
+[![gzip size][gzip-badge]][unpkg-dist]
+[![size][size-badge]][unpkg-dist]
 
 # Guideline Tip Id
 
