@@ -3,6 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/guideline-tip-id.svg?style=flat-square)](https://www.npmjs.com/package/guideline-tip-id)
 [![](https://data.jsdelivr.com/v1/package/npm/guideline-tip-id/badge)](https://www.jsdelivr.com/package/npm/guideline-tip-id)
 [![install size](https://packagephobia.com/badge?p=guideline-tip-id)](https://packagephobia.com/result?p=guideline-tip-id)
+[![upkg](https://unpkg.com/browse/guideline-tip-id@1.2.7/dist/)](https://unpkg.com/browse/guideline-tip-id@1.2.7/dist/)
 
 # Guideline Tip Id
 
