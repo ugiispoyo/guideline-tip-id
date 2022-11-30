@@ -5,6 +5,8 @@
 [![install size](https://packagephobia.com/badge?p=guideline-tip-id)](https://packagephobia.com/result?p=guideline-tip-id)
 [![gzip size][gzip-badge]][unpkg-dist]
 
+[![module formats: cjs, es, and modern][module-formats-badge]][unpkg-dist]
+
 # Guideline Tip Id
 
 Simple guideline tip, coach mark
