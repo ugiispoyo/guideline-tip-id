@@ -1,7 +1,7 @@
 {
   "name": "guideline-tip-id",
   "version": "0.0.0-development",
-  "description": "Guideline ui",
+  "description": "A simple guideline ui or coach mark ui with javascript",
   "main": "dist/index.js",
   "type": "module",
   "files": [
