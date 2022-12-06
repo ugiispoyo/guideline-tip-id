@@ -10,7 +10,8 @@
   "scripts": {
     "build": "rm -rf dist && rollup -c rollup.config.js",
     "semantic-release": "semantic-release",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "acp": "git add . && npm run commit && git push"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^23.0.2",
