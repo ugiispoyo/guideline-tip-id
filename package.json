@@ -1,6 +1,6 @@
 {
   "name": "guideline-tip-id",
-  "version": "1.2.9",
+  "version": "0.0.0-development",
   "description": "Guideline ui",
   "main": "dist/index.js",
   "type": "module",
@@ -8,7 +8,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "rm -rf dist && rollup -c rollup.config.js"
+    "build": "rm -rf dist && rollup -c rollup.config.js",
+    "semantic-release": "semantic-release",
+    "commit": "git-cz"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^23.0.2",
@@ -18,18 +20,20 @@
     "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.25.0",
     "react-dom": "^18.2.0",
     "rollup": "^3.3.0",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-uglify": "^6.0.4",
     "sass": "^1.56.1",
+    "semantic-release": "^19.0.5",
     "tslib": "^2.4.1",
     "vue": "^3.2.45"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ugiispoyo/guideline-tip-id.git"
+    "url": "https://github.com/ugiispoyo/guideline-tip-id.git"
   },
   "keywords": [
     "tip",
@@ -44,5 +48,15 @@
     "coach mark js"
   ],
   "author": "Ugi Ispoyo Widodo",
-  "license": "ISC"
+  "license": "ISC",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "release": {
+    "branches": [
+      "master"
+    ]
+  }
 }
