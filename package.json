@@ -49,7 +49,7 @@
     "coach mark js"
   ],
   "author": "Ugi Ispoyo Widodo",
-  "license": "ISC",
+  "license": "MIT",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
