@@ -122,6 +122,7 @@ class Core {
         heightElm = article.offsetHeight + 20;
         article.style.width = `${article.offsetWidth}px`;
         article.style.height = `${article.offsetHeight}px`;
+        article.style.position = "relative";
       }
       const offsetTopElm: number = article.offsetTop;
 
@@ -141,10 +142,11 @@ class Core {
       activeElm.style.width = `${widthElm}px`;
       activeElm.style.height = `${heightElm}px`;
       if (Boolean(withPadding)) {
-        activeElm.style.position = "absolute";
-        activeElm.style.top = `${article.offsetTop - 10}px`;
-        activeElm.style.left = `${article.offsetLeft - 10}px`;
+        // activeElm.style.position = "absolute";
+        activeElm.style.marginTop = `-10px`;
+        activeElm.style.marginLeft = `-10px`;
         activeElm.style.padding = `10px`;
+        activeElm.style.position = "relative";
       }
       wrapElm.parentNode.replaceChild(activeElm, wrapElm);
       activeElm.appendChild(wrapElm);
