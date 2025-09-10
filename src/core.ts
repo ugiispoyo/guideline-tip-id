@@ -142,10 +142,11 @@ class Core {
       activeElm.style.width = `${widthElm}px`;
       activeElm.style.height = `${heightElm}px`;
       if (Boolean(withPadding)) {
-        activeElm.style.position = "absolute";
         activeElm.style.marginTop = `-10px`;
         activeElm.style.marginLeft = `-10px`;
         activeElm.style.padding = `10px`;
+        activeElm.style.position = "relative";
+        activeElm.style.marginBottom = `-10px`;
       }
       wrapElm.parentNode.replaceChild(activeElm, wrapElm);
       activeElm.appendChild(wrapElm);
