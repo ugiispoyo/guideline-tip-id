@@ -35,15 +35,18 @@ class initialGuideline extends Core {
       content: dataGuideline[0].content,
     };
 
-    const checkID = document.getElementById(dataGuideline[0].dataID);
-    if (!Boolean(checkID)) {
-      return;
-    }
+    // 500ms pause to ensure the element is properly rendered first
+    setTimeout(() => {
+      const checkID = document.getElementById(dataGuideline[0].dataID);
+      if (!Boolean(checkID)) {
+        return;
+      }
 
-    core.closeGuideline(true);
-    core.initDocument();
-    core.renderGuideline();
-    renderOnVue(core.objDataActive.content);
+      core.closeGuideline(true);
+      core.initDocument();
+      core.renderGuideline();
+      renderOnVue(core.objDataActive.content);
+    }, 500);
   }
 
   nextTip(id: string): void {
