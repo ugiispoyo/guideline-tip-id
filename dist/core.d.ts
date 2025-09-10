@@ -2,22 +2,22 @@ import "./style/style.scss";
 export type I_Args = {
     dataID: string;
     positionTip: string;
-    content?: any;
+    content: any;
 };
-export type I_ArgsInit = {
-    dataGuideline: Array<I_Args>;
-} & T_CustomObj;
 export type T_CustomObj = {
     withPadding?: boolean;
     opacityBackdrop?: number;
 };
+export type I_ArgsInit = {
+    dataGuideline: Array<I_Args>;
+} & T_CustomObj;
 declare class Core {
     guidelineTip: HTMLDivElement;
-    _custom: T_CustomObj;
-    _html: any;
-    _allData: Array<I_Args>;
-    _objDataActive: I_Args;
-    _isRenderBtnClose: boolean | true;
+    private _custom;
+    private _html;
+    private _allData;
+    private _objDataActive;
+    private _isRenderBtnClose;
     set allData(data: Array<I_Args>);
     get allData(): Array<I_Args>;
     set custom(custom: T_CustomObj);
@@ -26,8 +26,10 @@ declare class Core {
     get objDataActive(): I_Args;
     set isRenderBtnClose(isRenderBtnClose: boolean | true);
     get isRenderBtnClose(): boolean | true;
-    set html(html: any);
-    get html(): any;
+    set html(html: HTMLHtmlElement | any);
+    get html(): HTMLHtmlElement | any;
+    private createDiv;
+    private setTipPosition;
     initDocument(): void;
     closeGuideline(isNext?: boolean | false): void;
     renderGuideline(): void;

@@ -35,6 +35,11 @@ class initialGuideline extends Core {
       content: dataGuideline[0].content,
     };
 
+    const checkID = document.getElementById(dataGuideline[0].dataID);
+    if (!Boolean(checkID)) {
+      return;
+    }
+
     core.closeGuideline(true);
     core.initDocument();
     core.renderGuideline();

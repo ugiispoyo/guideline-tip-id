@@ -20,6 +20,10 @@ class initialGuideline extends Core {
       content: dataGuideline[0].content,
     };
 
+    const checkID = document.getElementById(dataGuideline[0].dataID);
+    if (!Boolean(checkID)) {
+      return;
+    }
     window.onload = function () {
       core.initDocument();
       core.renderGuideline();
